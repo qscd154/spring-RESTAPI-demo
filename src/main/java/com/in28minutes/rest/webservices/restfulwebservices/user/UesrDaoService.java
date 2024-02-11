@@ -35,7 +35,7 @@ public class UesrDaoService {
 
     public User fidnOne(int id) {
         Predicate<? super User> predicate = u -> u.getId().equals(id);
-        return users.stream().filter(predicate).findFirst().get();
+        return users.stream().filter(predicate).findFirst().orElse(null);
     }
 
 
