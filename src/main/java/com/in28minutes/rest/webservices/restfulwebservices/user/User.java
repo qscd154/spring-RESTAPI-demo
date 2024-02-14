@@ -1,8 +1,5 @@
 package com.in28minutes.rest.webservices.restfulwebservices.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.in28minutes.rest.webservices.restfulwebservices.Post;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -26,6 +23,7 @@ public class User {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
+
     }
 
     @Id
@@ -41,7 +39,6 @@ public class User {
     private LocalDate birthDate;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnore
     private List<Post> posts;
 
     public Integer getId() {
@@ -68,6 +65,13 @@ public class User {
         this.birthDate = birthDate;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 
     @Override
     public String toString() {
